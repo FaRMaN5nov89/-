@@ -15,17 +15,32 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            padding: 20px;
+            padding: 0;
             direction: rtl;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+            padding: 30px 20px;
+            text-shadow: 0 4px 6px rgba(0,0,0,0.3);
         }
 
         .container {
-            max-width: 600px;
-            margin: 40px auto;
+            flex: 1;
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
             background: #F8FAFC;
-            border-radius: 30px;
+            border-radius: 30px 30px 0 0;
             padding: 40px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
+            display: flex;
+            flex-direction: column;
         }
 
         .today-date {
@@ -53,7 +68,7 @@
         }
 
         .discount-active {
-            color: #3B82F6;
+            color: #10B981;
         }
 
         .discount-inactive {
@@ -98,7 +113,7 @@
         }
 
         input:checked + .slider {
-            background-color: #3B82F6;
+            background-color: #10B981;
         }
 
         input:checked + .slider:before {
@@ -118,7 +133,7 @@
             border: 3px solid white;
             border-radius: 15px;
             padding: 20px 10px;
-            font-size: 20px;
+            font-size: 28px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
@@ -133,11 +148,12 @@
             background: #F1F5F9;
             border-radius: 20px;
             padding: 30px;
-            min-height: 200px;
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            min-height: 200px;
         }
 
         .result-text {
@@ -215,17 +231,107 @@
         }
 
         @media (max-width: 600px) {
+            .app-title {
+                font-size: 24px;
+                padding: 20px 15px;
+            }
+
             .container {
-                padding: 20px;
+                padding: 20px 15px;
+                border-radius: 20px 20px 0 0;
             }
             
             .today-date {
+                font-size: 20px;
+                margin-bottom: 20px;
+            }
+
+            .discount-section {
+                flex-direction: column;
+                gap: 10px;
+                padding: 12px;
+            }
+
+            .discount-text {
+                font-size: 18px;
+            }
+
+            .date-picker {
+                gap: 8px;
+            }
+
+            .date-button {
+                padding: 18px 8px;
+                font-size: 24px;
+            }
+
+            .result-container {
+                padding: 20px;
+                min-height: 180px;
+            }
+
+            .result-text {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            .highlight-error,
+            .highlight-success {
+                font-size: 26px;
+            }
+
+            .modal-content {
+                padding: 20px;
+                width: 95%;
+            }
+
+            .modal-title {
+                font-size: 18px;
+            }
+
+            .grid-button {
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .app-title {
+                font-size: 20px;
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 15px 10px;
+            }
+
+            .today-date {
+                font-size: 18px;
+            }
+
+            .discount-text {
+                font-size: 16px;
+            }
+
+            .date-button {
+                padding: 15px 5px;
                 font-size: 22px;
+            }
+
+            .result-text {
+                font-size: 16px;
+            }
+
+            .highlight-error,
+            .highlight-success {
+                font-size: 24px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="app-title">هەژمارکردنی عقد الیکترونی</div>
+    
     <div class="container">
         <div class="today-date" id="todayDate"></div>
         
