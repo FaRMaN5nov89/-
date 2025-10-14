@@ -112,44 +112,45 @@
         .info-card {
             background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
             border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 24px;
+            padding: 16px;
+            margin-bottom: 16px;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
             animation: slideIn 0.8s ease;
         }
 
         .today-date {
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 12px;
+            font-size: 22px;
+            margin-bottom: 10px;
             color: #1E293B;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .today-date::before {
-            content: "📅 ";
+            content: "";
             font-size: 22px;
         }
 
         .deadline-info {
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             color: #475569;
-            margin-top: 8px;
+            margin-top: 6px;
         }
 
         .deadline-info::before {
-            content: "⏰ ";
+            content: "";
             font-size: 18px;
         }
 
         .discount-section {
             display: flex;
+            flex-direction: row-reverse;
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 16px;
-            padding: 20px;
+            margin-bottom: 12px;
+            padding: 16px;
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -169,7 +170,7 @@
         }
 
         .discount-text::before {
-            content: "💰 ";
+            content: "";
             font-size: 22px;
         }
 
@@ -230,9 +231,9 @@
         }
 
         .section-label {
-            font-size: 18px;
+            font-size: 16px;
             color: #64748B;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-align: center;
             font-weight: 600;
         }
@@ -240,8 +241,8 @@
         .date-picker {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 16px;
             animation: fadeInUp 1.2s ease;
         }
 
@@ -249,9 +250,9 @@
             background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
-            border-radius: 20px;
-            padding: 15px 10px;
-            font-size: 52px;
+            border-radius: 18px;
+            padding: 12px 8px;
+            font-size: 44px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
@@ -289,20 +290,20 @@
 
         .date-label {
             display: block;
-            font-size: 14px;
-            margin-top: 4px;
+            font-size: 13px;
+            margin-top: 3px;
             opacity: 0.9;
         }
 
         .result-container {
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 25px;
-            padding: 30px;
+            padding: 20px 28px;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             text-align: center;
-            min-height: 180px;
+            min-height: 170px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             animation: fadeInUp 1.4s ease;
             position: relative;
@@ -568,17 +569,17 @@
         <div class="section-label">ڕێکەوتی دەستپێکردنی گرێبەست</div>
         
         <div class="date-picker">
-            <button class="date-button" onclick="showYearPicker()">
-                <div id="yearBtn">2026</div>
-                <div class="date-label">ساڵ</div>
+            <button class="date-button" onclick="showDayPicker()">
+                <div id="dayBtn">1</div>
+                <div class="date-label">ڕۆژ</div>
             </button>
             <button class="date-button" onclick="showMonthPicker()">
                 <div id="monthBtn">1</div>
                 <div class="date-label">مانگ</div>
             </button>
-            <button class="date-button" onclick="showDayPicker()">
-                <div id="dayBtn">1</div>
-                <div class="date-label">ڕۆژ</div>
+            <button class="date-button" onclick="showYearPicker()">
+                <div id="yearBtn">2026</div>
+                <div class="date-label">ساڵ</div>
             </button>
         </div>
         
