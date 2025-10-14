@@ -71,51 +71,16 @@
             }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.5), 0 0 40px rgba(59, 130, 246, 0.3); }
-            50% { box-shadow: 0 0 30px rgba(59, 130, 246, 0.8), 0 0 60px rgba(59, 130, 246, 0.5); }
-        }
-
-        @keyframes sparkle {
-            0%, 100% { opacity: 0; transform: scale(0); }
-            50% { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #f97794, #623aa2);
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
             background-size: 400% 400%;
-            animation: gradientShift 20s ease infinite;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             padding: 0;
             direction: rtl;
             display: flex;
             flex-direction: column;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
-            pointer-events: none;
-            animation: pulse 8s ease infinite;
         }
 
         .app-title {
@@ -123,82 +88,59 @@
             font-size: 42px;
             font-weight: bold;
             color: white;
-            padding: 35px 20px;
-            text-shadow: 0 4px 20px rgba(0,0,0,0.5), 0 0 40px rgba(255,255,255,0.3);
-            animation: fadeInUp 0.8s ease, float 3s ease-in-out infinite;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 10;
+            padding: 30px 20px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+            animation: fadeInUp 0.8s ease;
+            letter-spacing: 1px;
         }
 
         .container {
             max-width: 550px;
             width: 100%;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 35px 35px 0 0;
-            padding: 30px;
-            box-shadow: 0 -15px 80px rgba(0,0,0,0.4), 0 -5px 40px rgba(255,255,255,0.1);
+            background: rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 30px 30px 0 0;
+            padding: 28px;
+            box-shadow: 0 -10px 60px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
             animation: fadeInUp 1s ease;
             flex-grow: 1;
-            position: relative;
-            border-top: 3px solid rgba(255,255,255,0.5);
         }
 
         .info-card {
             background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-            border-radius: 22px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2), inset 0 1px 0 rgba(255,255,255,0.5);
+            border-radius: 20px;
+            padding: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
             animation: slideIn 0.8s ease;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(59, 130, 246, 0.1);
-        }
-
-        .info-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 4s infinite;
         }
 
         .today-date {
             text-align: center;
-            font-size: 23px;
-            margin-bottom: 12px;
+            font-size: 22px;
+            margin-bottom: 10px;
             color: #1E293B;
             font-weight: 700;
-            position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .today-date::before {
-            content: "📅";
-            font-size: 24px;
-            margin-left: 8px;
+            content: "";
+            font-size: 22px;
         }
 
         .deadline-info {
             text-align: center;
-            font-size: 19px;
+            font-size: 18px;
             color: #475569;
-            margin-top: 8px;
-            position: relative;
+            margin-top: 6px;
         }
 
         .deadline-info::before {
-            content: "⏰";
-            font-size: 19px;
-            margin-left: 8px;
+            content: "";
+            font-size: 18px;
         }
 
         .discount-section {
@@ -206,70 +148,46 @@
             flex-direction: row-reverse;
             align-items: center;
             justify-content: center;
-            gap: 18px;
-            margin-bottom: 18px;
-            padding: 20px;
-            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-            border-radius: 25px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.8);
+            gap: 15px;
+            margin-bottom: 12px;
+            padding: 16px;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             animation: slideIn 1s ease;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid rgba(148, 163, 184, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .discount-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.4), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
-        }
-
-        .discount-section:hover::before {
-            transform: translateX(100%);
+            transition: all 0.3s ease;
         }
 
         .discount-section:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
         }
 
         .discount-text {
             font-size: 26px;
             font-weight: bold;
             transition: all 0.3s ease;
-            position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .discount-text::before {
-            content: "💰";
-            font-size: 26px;
-            margin-left: 10px;
+            content: "";
+            font-size: 24px;
         }
 
         .discount-active {
             color: #10B981;
             animation: pulse 2s infinite;
-            text-shadow: 0 0 20px rgba(16, 185, 129, 0.4);
         }
 
         .discount-inactive {
             color: #EF4444;
-            text-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
         }
 
         .switch {
             position: relative;
             display: inline-block;
-            width: 75px;
-            height: 42px;
+            width: 70px;
+            height: 40px;
         }
 
         .switch input {
@@ -286,65 +204,45 @@
             right: 0;
             bottom: 0;
             background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-            transition: .5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 42px;
-            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4), inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .slider:hover {
-            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.5);
+            transition: .4s;
+            border-radius: 40px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .slider:before {
             position: absolute;
             content: "";
-            height: 34px;
-            width: 34px;
+            height: 32px;
+            width: 32px;
             left: 4px;
             bottom: 4px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            transition: .5s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            transition: .4s;
             border-radius: 50%;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.3), 0 0 0 2px rgba(255,255,255,0.8);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         input:checked + .slider {
             background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4), inset 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        input:checked + .slider:hover {
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
         }
 
         input:checked + .slider:before {
-            transform: translateX(33px);
+            transform: translateX(30px);
         }
 
         .section-label {
-            font-size: 17px;
+            font-size: 16px;
             color: #64748B;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-align: center;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            position: relative;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .section-label::before,
-        .section-label::after {
-            content: '✦';
-            margin: 0 10px;
-            opacity: 0.5;
+            font-weight: 600;
         }
 
         .date-picker {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 16px;
             animation: fadeInUp 1.2s ease;
         }
 
@@ -352,16 +250,15 @@
             background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
-            border-radius: 22px;
-            padding: 14px 10px;
-            font-size: 46px;
+            border-radius: 18px;
+            padding: 12px 8px;
+            font-size: 44px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .date-button::before {
@@ -372,7 +269,7 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255,255,255,0.4);
+            background: rgba(255,255,255,0.3);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
@@ -383,37 +280,34 @@
         }
 
         .date-button:hover {
-            transform: translateY(-6px) scale(1.06);
-            box-shadow: 0 12px 35px rgba(59, 130, 246, 0.5);
-            animation: glow 2s ease infinite;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
 
         .date-button:active {
-            transform: translateY(-2px) scale(1.02);
+            transform: translateY(-2px) scale(0.98);
         }
 
         .date-label {
             display: block;
-            font-size: 14px;
-            margin-top: 5px;
-            opacity: 0.95;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 13px;
+            margin-top: 3px;
+            opacity: 0.9;
         }
 
         .result-container {
-            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-            border-radius: 30px;
-            padding: 22px 30px;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            border-radius: 25px;
+            padding: 20px 28px;
             display: flex;
             align-items: flex-start;
             justify-content: center;
             text-align: center;
-            min-height: 180px;
-            box-shadow: 0 10px 35px rgba(0,0,0,0.15), inset 0 2px 4px rgba(255,255,255,0.8);
+            min-height: 170px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             animation: fadeInUp 1.4s ease;
             position: relative;
             overflow: hidden;
-            border: 2px solid rgba(148, 163, 184, 0.1);
         }
 
         .result-container::before {
@@ -423,41 +317,37 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
             transform: rotate(45deg);
-            animation: shimmer 4s infinite;
+            animation: shimmer 3s infinite;
         }
 
-
-
         .result-text {
-            font-size: 23px;
+            font-size: 22px;
             line-height: 2;
             position: relative;
             z-index: 1;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .result-text strong {
             color: #1E293B;
-            font-size: 25px;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 24px;
         }
 
         .highlight-error {
             color: #EF4444;
-            font-size: 44px;
+            font-size: 42px;
             font-weight: bold;
-            text-shadow: 0 4px 15px rgba(239, 68, 68, 0.5), 0 0 30px rgba(239, 68, 68, 0.3);
+            text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
             display: inline-block;
             animation: pulse 2s infinite;
         }
 
         .highlight-success {
             color: #10B981;
-            font-size: 44px;
+            font-size: 42px;
             font-weight: bold;
-            text-shadow: 0 4px 15px rgba(16, 185, 129, 0.5), 0 0 30px rgba(16, 185, 129, 0.3);
+            text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
             display: inline-block;
             animation: pulse 2s infinite;
         }
@@ -469,8 +359,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0,0,0,0.85);
-            backdrop-filter: blur(10px);
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -482,89 +372,54 @@
         }
 
         .modal-content {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-            border-radius: 30px;
-            padding: 40px;
-            max-width: 440px;
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            max-width: 420px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 25px 80px rgba(0,0,0,0.4);
-            animation: modalSlideIn 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 3px solid rgba(255,255,255,0.5);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            animation: modalSlideIn 0.4s ease;
         }
 
         .modal-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: bold;
             color: #1E293B;
-            margin-bottom: 28px;
+            margin-bottom: 25px;
             text-align: center;
-            padding-bottom: 18px;
-            border-bottom: 4px solid #3B82F6;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            position: relative;
-        }
-
-        .modal-title::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, transparent, #3B82F6, transparent);
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3B82F6;
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 14px;
+            gap: 12px;
         }
 
         .grid-button {
             background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
-            border-radius: 18px;
-            padding: 20px;
-            font-size: 26px;
+            border-radius: 15px;
+            padding: 18px;
+            font-size: 24px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 6px 16px rgba(59, 130, 246, 0.4), inset 0 2px 4px rgba(255,255,255,0.2);
-            border: 2px solid rgba(255,255,255,0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .grid-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .grid-button:hover::before {
-            width: 200px;
-            height: 200px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
         }
 
         .grid-button:hover {
-            transform: translateY(-4px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.5);
+            transform: translateY(-3px) scale(1.08);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
             background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
         }
 
         .grid-button:active {
-            transform: translateY(-1px) scale(1.05);
+            transform: translateY(-1px) scale(1.02);
         }
 
         .number-animate {
@@ -574,26 +429,26 @@
         @media (max-width: 600px) {
             .app-title {
                 font-size: 28px;
-                padding: 25px 15px;
+                padding: 20px 15px;
             }
 
             .container {
-                padding: 22px 18px;
-                border-radius: 25px 25px 0 0;
+                padding: 20px 15px;
+                border-radius: 20px 20px 0 0;
             }
             
             .today-date {
-                font-size: 21px;
+                font-size: 20px;
             }
 
             .deadline-info {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .discount-section {
                 flex-direction: row-reverse;
-                gap: 12px;
-                padding: 18px 20px;
+                gap: 10px;
+                padding: 15px;
             }
 
             .discount-text {
@@ -601,96 +456,95 @@
             }
 
             .date-picker {
-                gap: 8px;
+                gap: 10px;
             }
 
             .date-button {
-                padding: 12px 8px;
-                font-size: 40px;
-                border-radius: 18px;
+                padding: 14px 8px;
+                font-size: 42px;
             }
 
             .date-label {
-                font-size: 13px;
+                font-size: 12px;
             }
 
             .result-container {
-                padding: 28px 20px;
+                padding: 25px;
                 min-height: 180px;
             }
 
             .result-text {
-                font-size: 19px;
+                font-size: 18px;
                 line-height: 1.9;
             }
 
             .result-text strong {
-                font-size: 21px;
+                font-size: 20px;
             }
 
             .highlight-error,
             .highlight-success {
-                font-size: 38px;
+                font-size: 36px;
             }
 
             .modal-content {
-                padding: 30px;
+                padding: 25px;
                 width: 95%;
             }
 
             .modal-title {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .grid-button {
-                padding: 14px;
-                font-size: 20px;
+                padding: 12px;
+                font-size: 18px;
             }
         }
 
         @media (max-width: 400px) {
             .app-title {
-                font-size: 24px;
-                padding: 20px 12px;
+                font-size: 20px;
+                padding: 15px 10px;
             }
 
             .container {
-                padding: 18px 12px;
+                padding: 15px 10px;
             }
 
             .today-date {
-                font-size: 19px;
+                font-size: 18px;
             }
 
             .deadline-info {
-                font-size: 15px;
+                font-size: 14px;
             }
 
             .discount-text {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .date-button {
-                padding: 10px 6px;
-                font-size: 36px;
+                padding: 12px 5px;
+                font-size: 38px;
             }
 
             .date-label {
-                font-size: 12px;
-                margin-top: 4px;
+                font-size: 11px;
+                margin-top: 3px;
             }
 
             .result-text {
-                font-size: 17px;
+                font-size: 16px;
             }
 
             .result-text strong {
-                font-size: 19px;
+                font-size: 18px;
             }
 
             .highlight-error,
             .highlight-success {
-                font-size: 34px;
+                font-size: 32px;
             }
         }
     </style>
