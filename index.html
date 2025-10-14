@@ -112,16 +112,16 @@
         .info-card {
             background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
             border-radius: 20px;
-            padding: 16px;
-            margin-bottom: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
             animation: slideIn 0.8s ease;
         }
 
         .today-date {
             text-align: center;
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 12px;
             color: #1E293B;
             font-weight: 700;
         }
@@ -133,9 +133,10 @@
 
         .deadline-info {
             text-align: center;
-            font-size: 18px;
+            font-size: 20px;
             color: #475569;
-            margin-top: 6px;
+            margin-top: 8px;
+            font-weight: 600;
         }
 
         .deadline-info::before {
@@ -149,8 +150,8 @@
             align-items: center;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 12px;
-            padding: 16px;
+            margin-bottom: 20px;
+            padding: 20px;
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 20px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -231,11 +232,11 @@
         }
 
         .section-label {
-            font-size: 16px;
-            color: #64748B;
-            margin-bottom: 8px;
+            font-size: 18px;
+            color: #475569;
+            margin-bottom: 12px;
             text-align: center;
-            font-weight: 600;
+            font-weight: 700;
         }
 
         .date-picker {
@@ -428,27 +429,38 @@
 
         @media (max-width: 600px) {
             .app-title {
-                font-size: 28px;
-                padding: 20px 15px;
+                font-size: 32px;
+                padding: 25px 15px;
             }
 
             .container {
-                padding: 20px 15px;
-                border-radius: 20px 20px 0 0;
+                padding: 24px 18px;
+                border-radius: 25px 25px 0 0;
+            }
+            
+            .info-card {
+                padding: 20px;
+                margin-bottom: 20px;
             }
             
             .today-date {
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .deadline-info {
-                font-size: 16px;
+                font-size: 19px;
+            }
+
+            .section-label {
+                font-size: 18px;
+                margin-bottom: 12px;
             }
 
             .discount-section {
                 flex-direction: row-reverse;
-                gap: 10px;
-                padding: 15px;
+                gap: 12px;
+                padding: 18px;
+                margin-bottom: 18px;
             }
 
             .discount-text {
@@ -456,26 +468,99 @@
             }
 
             .date-picker {
-                gap: 10px;
+                gap: 12px;
+                margin-bottom: 18px;
             }
 
             .date-button {
-                padding: 14px 8px;
+                padding: 16px 8px;
+                font-size: 46px;
+            }
+
+            .date-label {
+                font-size: 14px;
+            }
+
+            .result-container {
+                padding: 28px;
+                min-height: 190px;
+            }
+
+            .result-text {
+                font-size: 20px;
+                line-height: 2;
+            }
+
+            .result-text strong {
+                font-size: 22px;
+            }
+
+            .highlight-error,
+            .highlight-success {
+                font-size: 40px;
+            }
+
+            .modal-content {
+                padding: 30px;
+                width: 92%;
+            }
+
+            .modal-title {
+                font-size: 22px;
+            }
+
+            .grid-button {
+                padding: 16px;
+                font-size: 22px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .app-title {
+                font-size: 26px;
+                padding: 20px 12px;
+            }
+
+            .container {
+                padding: 18px 12px;
+            }
+
+            .info-card {
+                padding: 18px;
+            }
+
+            .today-date {
+                font-size: 20px;
+            }
+
+            .deadline-info {
+                font-size: 17px;
+            }
+
+            .section-label {
+                font-size: 17px;
+            }
+
+            .discount-text {
+                font-size: 22px;
+            }
+
+            .date-button {
+                padding: 14px 6px;
                 font-size: 42px;
             }
 
             .date-label {
-                font-size: 12px;
+                font-size: 13px;
+                margin-top: 4px;
             }
 
             .result-container {
-                padding: 25px;
-                min-height: 180px;
+                padding: 24px;
             }
 
             .result-text {
                 font-size: 18px;
-                line-height: 1.9;
             }
 
             .result-text strong {
@@ -485,66 +570,6 @@
             .highlight-error,
             .highlight-success {
                 font-size: 36px;
-            }
-
-            .modal-content {
-                padding: 25px;
-                width: 95%;
-            }
-
-            .modal-title {
-                font-size: 20px;
-            }
-
-            .grid-button {
-                padding: 12px;
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .app-title {
-                font-size: 20px;
-                padding: 15px 10px;
-            }
-
-            .container {
-                padding: 15px 10px;
-            }
-
-            .today-date {
-                font-size: 18px;
-            }
-
-            .deadline-info {
-                font-size: 14px;
-            }
-
-            .discount-text {
-                font-size: 20px;
-            }
-
-            .date-button {
-                padding: 12px 5px;
-                font-size: 38px;
-            }
-
-            .date-label {
-                font-size: 11px;
-                margin-top: 3px;
-            }
-
-            .result-text {
-                font-size: 16px;
-            }
-
-            .result-text strong {
-                font-size: 18px;
-            }
-
-            .highlight-error,
-            .highlight-success {
-                font-size: 32px;
             }
         }
     </style>
