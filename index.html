@@ -134,7 +134,7 @@
             backdrop-filter: blur(15px);
             border-radius: 25px 25px 0 0;
             padding: 20px;
-            box-shadow: 0 -10px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 -10px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
             display: flex;
             flex-direction: column;
             animation: fadeInUp 1s ease;
@@ -146,9 +146,16 @@
             border-radius: 18px;
             padding: 16px;
             margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15), 0 0 30px rgba(59, 130, 246, 0.05);
             animation: slideIn 0.8s ease;
             line-height: 1.1;
+            border: 2px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2), 0 0 40px rgba(59, 130, 246, 0.1);
         }
 
         .today-date {
@@ -189,15 +196,16 @@
             padding: 16px;
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 0 25px rgba(0,0,0,0.03);
             animation: slideIn 1s ease;
             transition: all 0.3s ease;
             line-height: 1.1;
+            border: 2px solid rgba(148, 163, 184, 0.1);
         }
 
         .discount-section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 35px rgba(0,0,0,0.05);
         }
 
         .discount-text {
@@ -301,29 +309,29 @@
 
         .date-button:nth-child(1) {
             background: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4), 0 0 20px rgba(102, 126, 234, 0.2);
         }
 
         .date-button:nth-child(1):hover {
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.6), 0 0 40px rgba(102, 126, 234, 0.4);
         }
 
         .date-button:nth-child(2) {
             background: linear-gradient(135deg, rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%);
-            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4), 0 0 20px rgba(240, 147, 251, 0.2);
         }
 
         .date-button:nth-child(2):hover {
-            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.5);
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.6), 0 0 40px rgba(240, 147, 251, 0.4);
         }
 
         .date-button:nth-child(3) {
             background: linear-gradient(135deg, rgb(79, 172, 254) 0%, rgb(0, 242, 254) 100%);
-            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4), 0 0 20px rgba(79, 172, 254, 0.2);
         }
 
         .date-button:nth-child(3):hover {
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.5);
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.6), 0 0 40px rgba(79, 172, 254, 0.4);
         }
 
         .date-button::before {
@@ -369,10 +377,11 @@
             justify-content: center;
             text-align: center;
             min-height: 160px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
             animation: fadeInUp 1.4s ease;
             position: relative;
             overflow: hidden;
+            border: 2px solid rgba(148, 163, 184, 0.1);
         }
 
         .result-container::before {
@@ -455,8 +464,9 @@
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
             animation: modalSlideIn 0.4s ease;
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .modal-title {
@@ -496,7 +506,7 @@
 
         .grid-button:hover {
             transform: translateY(-3px) scale(1.08);
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.5), 0 0 30px rgba(59, 130, 246, 0.3);
             background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
         }
 
