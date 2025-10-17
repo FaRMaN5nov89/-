@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حیسابکردنی دواکەوتن</title>
+    <title>هەژمارکردنی گرێبەستی الیکترونی</title>
     <style>
         * {
             margin: 0;
@@ -60,6 +60,20 @@
             to { opacity: 1; }
         }
 
+        @keyframes ledColorShift {
+            0% { background-position: 0% 50%; }
+            10% { background-position: 10% 50%; }
+            20% { background-position: 20% 50%; }
+            30% { background-position: 30% 50%; }
+            40% { background-position: 40% 50%; }
+            50% { background-position: 50% 50%; }
+            60% { background-position: 60% 50%; }
+            70% { background-position: 70% 50%; }
+            80% { background-position: 80% 50%; }
+            90% { background-position: 90% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
         @keyframes modalSlideIn {
             from {
                 transform: translateY(-50px) scale(0.9);
@@ -88,10 +102,25 @@
             text-align: center;
             font-size: 38px;
             font-weight: bold;
-            color: white;
+            background: linear-gradient(90deg, 
+                rgb(255, 0, 0) 0%,      /* سوور */
+                rgb(255, 127, 0) 10%,   /* پرتەقاڵی */
+                rgb(255, 255, 0) 20%,   /* زەرد */
+                rgb(0, 255, 0) 30%,     /* سەوز */
+                rgb(0, 255, 255) 40%,   /* شینی ئاسمانی */
+                rgb(0, 0, 255) 50%,     /* شین */
+                rgb(139, 0, 255) 60%,   /* بەنەوشە */
+                rgb(255, 0, 255) 70%,   /* پەمەیی */
+                rgb(255, 0, 127) 80%,   /* گوڵابی */
+                rgb(255, 0, 0) 100%     /* گەڕانەوە بۆ سوور */
+            );
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             padding: 20px 15px;
-            text-shadow: 0 4px 15px rgba(0,0,0,0.4);
-            animation: fadeInUp 0.8s ease;
+            text-shadow: none;
+            animation: fadeInUp 0.8s ease, ledColorShift 4s linear infinite;
             letter-spacing: 1px;
             line-height: 1.1;
             margin-bottom: 0;
@@ -125,10 +154,10 @@
         .today-date {
             text-align: center;
             font-size: 22px;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             color: #1E293B;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.6;
         }
 
         .today-date::before {
@@ -142,7 +171,7 @@
             color: #475569;
             margin-top: 2px;
             font-weight: 600;
-            line-height: 1.1;
+            line-height: 1.6;
         }
 
         .deadline-info::before {
@@ -240,24 +269,23 @@
         }
 
         .section-label {
-            font-size: 17px;
+            font-size: 24px;
             color: #475569;
             margin-bottom: 8px;
             text-align: center;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.8;
         }
 
         .date-picker {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 4px;
+            gap: 8px;
             margin-bottom: 12px;
             animation: fadeInUp 1.2s ease;
         }
 
         .date-button {
-            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
             border-radius: 16px;
@@ -266,10 +294,36 @@
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
             position: relative;
             overflow: hidden;
             line-height: 1;
+        }
+
+        .date-button:nth-child(1) {
+            background: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(118, 75, 162) 100%);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .date-button:nth-child(1):hover {
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        .date-button:nth-child(2) {
+            background: linear-gradient(135deg, rgb(240, 147, 251) 0%, rgb(245, 87, 108) 100%);
+            box-shadow: 0 4px 15px rgba(240, 147, 251, 0.4);
+        }
+
+        .date-button:nth-child(2):hover {
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.5);
+        }
+
+        .date-button:nth-child(3) {
+            background: linear-gradient(135deg, rgb(79, 172, 254) 0%, rgb(0, 242, 254) 100%);
+            box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+        }
+
+        .date-button:nth-child(3):hover {
+            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.5);
         }
 
         .date-button::before {
@@ -292,7 +346,6 @@
 
         .date-button:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
         }
 
         .date-button:active {
@@ -335,7 +388,7 @@
         }
 
         .result-text {
-            font-size: 20px;
+            font-size: 24px;
             line-height: 1.6;
             position: relative;
             z-index: 1;
@@ -343,7 +396,7 @@
 
         .result-text strong {
             color: #1E293B;
-            font-size: 22px;
+            font-size: 32px;
         }
 
         .highlight-error {
@@ -634,7 +687,7 @@
     </style>
 </head>
 <body>
-    <div class="app-title">هەژمارکردنی عقد الیکترونی</div>
+    <div class="app-title">هەژمارکردنی گرێبەستی الیکترونی</div>
     
     <div class="container">
         <div class="info-card">
@@ -743,7 +796,7 @@
             grid.innerHTML = '';
             grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
             
-            for (let year = 2020; year <= 2035; year++) {
+            for (let year = 2021; year <= 2035; year++) {
                 const btn = document.createElement('button');
                 btn.className = 'grid-button';
                 btn.textContent = year;
@@ -848,7 +901,7 @@
                 const remainingDays = Math.abs(diffDays);
                 resultElement.innerHTML = `
                     <span class="result-line"><span class="highlight-success">✓ بەسەر نەچووە</span></span>
-                    <span class="result-line"><strong>${remainingDays} ڕۆژ</strong> ماوە بۆ کۆتایی وادە</span>
+                    <span class="result-line"><strong>${remainingDays} ڕۆژ</strong> ماوە بەسەربچێت</span>
                 `;
             }
         }
