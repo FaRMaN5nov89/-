@@ -81,27 +81,30 @@
             direction: rtl;
             display: flex;
             flex-direction: column;
+            line-height: 1.1;
         }
 
         .app-title {
             text-align: center;
-            font-size: 42px;
+            font-size: 38px;
             font-weight: bold;
             color: white;
-            padding: 30px 20px;
+            padding: 20px 15px;
             text-shadow: 0 4px 15px rgba(0,0,0,0.4);
             animation: fadeInUp 0.8s ease;
             letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 0;
         }
 
         .container {
-            max-width: 550px;
+            max-width: 520px;
             width: 100%;
             margin: 0 auto;
             background: rgba(248, 250, 252, 0.98);
             backdrop-filter: blur(15px);
-            border-radius: 30px 30px 0 0;
-            padding: 28px;
+            border-radius: 25px 25px 0 0;
+            padding: 20px;
             box-shadow: 0 -10px 60px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
@@ -111,37 +114,40 @@
 
         .info-card {
             background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 20px;
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 15px;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
             animation: slideIn 0.8s ease;
+            line-height: 1.1;
         }
 
         .today-date {
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 12px;
+            font-size: 22px;
+            margin-bottom: 4px;
             color: #1E293B;
             font-weight: 700;
+            line-height: 1.1;
         }
 
         .today-date::before {
             content: "";
-            font-size: 22px;
+            font-size: 20px;
         }
 
         .deadline-info {
             text-align: center;
-            font-size: 20px;
+            font-size: 18px;
             color: #475569;
-            margin-top: 8px;
+            margin-top: 2px;
             font-weight: 600;
+            line-height: 1.1;
         }
 
         .deadline-info::before {
             content: "";
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .discount-section {
@@ -149,14 +155,15 @@
             flex-direction: row-reverse;
             align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding: 20px;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding: 16px;
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
-            border-radius: 20px;
+            border-radius: 18px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             animation: slideIn 1s ease;
             transition: all 0.3s ease;
+            line-height: 1.1;
         }
 
         .discount-section:hover {
@@ -165,14 +172,15 @@
         }
 
         .discount-text {
-            font-size: 26px;
+            font-size: 22px;
             font-weight: bold;
             transition: all 0.3s ease;
+            line-height: 1.1;
         }
 
         .discount-text::before {
             content: "";
-            font-size: 24px;
+            font-size: 20px;
         }
 
         .discount-active {
@@ -187,8 +195,8 @@
         .switch {
             position: relative;
             display: inline-block;
-            width: 70px;
-            height: 40px;
+            width: 65px;
+            height: 35px;
         }
 
         .switch input {
@@ -206,15 +214,15 @@
             bottom: 0;
             background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
             transition: .4s;
-            border-radius: 40px;
+            border-radius: 35px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .slider:before {
             position: absolute;
             content: "";
-            height: 32px;
-            width: 32px;
+            height: 28px;
+            width: 28px;
             left: 4px;
             bottom: 4px;
             background: white;
@@ -228,22 +236,23 @@
         }
 
         input:checked + .slider:before {
-            transform: translateX(30px);
+            transform: translateX(28px);
         }
 
         .section-label {
-            font-size: 18px;
+            font-size: 17px;
             color: #475569;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
             text-align: center;
             font-weight: 700;
+            line-height: 1.1;
         }
 
         .date-picker {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin-bottom: 16px;
+            gap: 4px;
+            margin-bottom: 12px;
             animation: fadeInUp 1.2s ease;
         }
 
@@ -251,15 +260,16 @@
             background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
-            border-radius: 18px;
-            padding: 12px 8px;
-            font-size: 44px;
+            border-radius: 16px;
+            padding: 10px 6px;
+            font-size: 40px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
             position: relative;
             overflow: hidden;
+            line-height: 1;
         }
 
         .date-button::before {
@@ -291,20 +301,21 @@
 
         .date-label {
             display: block;
-            font-size: 13px;
-            margin-top: 3px;
+            font-size: 12px;
+            margin-top: 2px;
             opacity: 0.9;
+            line-height: 1;
         }
 
         .result-container {
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
-            border-radius: 25px;
-            padding: 12px 28px 28px 28px;
+            border-radius: 20px;
+            padding: 15px 20px 20px 20px;
             display: flex;
             align-items: flex-start;
             justify-content: center;
             text-align: center;
-            min-height: 170px;
+            min-height: 160px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             animation: fadeInUp 1.4s ease;
             position: relative;
@@ -324,33 +335,44 @@
         }
 
         .result-text {
-            font-size: 22px;
-            line-height: 1.7;
+            font-size: 20px;
+            line-height: 1.6;
             position: relative;
             z-index: 1;
         }
 
         .result-text strong {
             color: #1E293B;
-            font-size: 24px;
+            font-size: 22px;
         }
 
         .highlight-error {
             color: #EF4444;
-            font-size: 42px;
+            font-size: 38px;
             font-weight: bold;
             text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
             display: inline-block;
             animation: pulse 2s infinite;
+            line-height: 1;
         }
 
         .highlight-success {
             color: #10B981;
-            font-size: 42px;
+            font-size: 38px;
             font-weight: bold;
             text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
             display: inline-block;
             animation: pulse 2s infinite;
+            line-height: 1;
+        }
+
+        .result-line {
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .result-line:last-child {
+            margin-bottom: 0;
         }
 
         .modal {
@@ -374,9 +396,9 @@
 
         .modal-content {
             background: white;
-            border-radius: 25px;
-            padding: 35px;
-            max-width: 420px;
+            border-radius: 22px;
+            padding: 25px;
+            max-width: 380px;
             width: 90%;
             max-height: 80vh;
             overflow-y: auto;
@@ -385,32 +407,34 @@
         }
 
         .modal-title {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
             color: #1E293B;
-            margin-bottom: 25px;
+            margin-bottom: 12px;
             text-align: center;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 3px solid #3B82F6;
+            line-height: 1.1;
         }
 
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            gap: 8px;
         }
 
         .grid-button {
             background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
-            border-radius: 15px;
-            padding: 18px;
-            font-size: 24px;
+            border-radius: 14px;
+            padding: 14px;
+            font-size: 22px;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            line-height: 1;
         }
 
         .grid-button:hover {
@@ -429,148 +453,176 @@
 
         @media (max-width: 600px) {
             .app-title {
-                font-size: 32px;
-                padding: 25px 15px;
+                font-size: 28px;
+                padding: 18px 12px;
             }
 
             .container {
-                padding: 24px 18px;
-                border-radius: 25px 25px 0 0;
+                padding: 18px 14px;
+                border-radius: 20px 20px 0 0;
             }
             
             .info-card {
-                padding: 20px;
-                margin-bottom: 20px;
+                padding: 14px;
+                margin-bottom: 14px;
             }
             
             .today-date {
-                font-size: 22px;
+                font-size: 20px;
+                margin-bottom: 3px;
             }
 
             .deadline-info {
-                font-size: 19px;
+                font-size: 17px;
+                margin-top: 2px;
             }
 
             .section-label {
-                font-size: 18px;
-                margin-bottom: 12px;
+                font-size: 16px;
+                margin-bottom: 8px;
             }
 
             .discount-section {
                 flex-direction: row-reverse;
-                gap: 12px;
-                padding: 18px;
-                margin-bottom: 18px;
+                gap: 8px;
+                padding: 14px;
+                margin-bottom: 14px;
             }
 
             .discount-text {
-                font-size: 24px;
+                font-size: 20px;
             }
 
             .date-picker {
-                gap: 12px;
-                margin-bottom: 18px;
+                gap: 6px;
+                margin-bottom: 14px;
             }
 
             .date-button {
-                padding: 16px 8px;
-                font-size: 46px;
+                padding: 12px 6px;
+                font-size: 36px;
             }
 
             .date-label {
-                font-size: 14px;
+                font-size: 11px;
             }
 
             .result-container {
-                padding: 14px 28px 28px 28px;
-                min-height: 190px;
+                padding: 12px 20px 20px 20px;
+                min-height: 150px;
             }
 
             .result-text {
-                font-size: 20px;
-                line-height: 1.7;
+                font-size: 18px;
+                line-height: 1.6;
             }
 
             .result-text strong {
-                font-size: 22px;
+                font-size: 20px;
             }
 
             .highlight-error,
             .highlight-success {
-                font-size: 40px;
+                font-size: 34px;
+            }
+
+            .result-line {
+                margin-bottom: 6px;
             }
 
             .modal-content {
-                padding: 30px;
+                padding: 22px;
                 width: 92%;
             }
 
             .modal-title {
-                font-size: 22px;
+                font-size: 20px;
+                margin-bottom: 10px;
             }
 
             .grid-button {
-                padding: 16px;
-                font-size: 22px;
+                padding: 12px;
+                font-size: 20px;
             }
         }
 
         @media (max-width: 400px) {
             .app-title {
-                font-size: 26px;
-                padding: 20px 12px;
+                font-size: 24px;
+                padding: 15px 10px;
             }
 
             .container {
-                padding: 18px 12px;
+                padding: 15px 10px;
             }
 
             .info-card {
-                padding: 18px;
+                padding: 12px;
             }
 
             .today-date {
-                font-size: 20px;
+                font-size: 18px;
+                margin-bottom: 2px;
             }
 
             .deadline-info {
-                font-size: 17px;
+                font-size: 16px;
+                margin-top: 1px;
             }
 
             .section-label {
-                font-size: 17px;
+                font-size: 15px;
             }
 
             .discount-text {
-                font-size: 22px;
+                font-size: 18px;
             }
 
             .date-button {
-                padding: 14px 6px;
-                font-size: 42px;
+                padding: 10px 5px;
+                font-size: 32px;
             }
 
             .date-label {
-                font-size: 13px;
-                margin-top: 4px;
+                font-size: 10px;
+                margin-top: 1px;
             }
 
             .result-container {
-                padding: 12px 24px 24px 24px;
+                padding: 10px 16px 16px 16px;
+                min-height: 140px;
             }
 
             .result-text {
-                font-size: 18px;
-                line-height: 1.7;
+                font-size: 16px;
+                line-height: 1.6;
             }
 
             .result-text strong {
-                font-size: 20px;
+                font-size: 18px;
             }
 
             .highlight-error,
             .highlight-success {
-                font-size: 36px;
+                font-size: 30px;
+            }
+
+            .result-line {
+                margin-bottom: 5px;
+            }
+
+            .modal-content {
+                padding: 18px;
+            }
+
+            .modal-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .grid-button {
+                padding: 10px;
+                font-size: 18px;
             }
         }
     </style>
@@ -714,7 +766,7 @@
             for (let month = 1; month <= 12; month++) {
                 const btn = document.createElement('button');
                 btn.className = 'grid-button';
-                btn.innerHTML = `<div style="font-size: 32px; margin-bottom: 6px;">${month}</div><div style="font-size: 16px; opacity: 0.9;">${monthNames[month - 1]}</div>`;
+                btn.innerHTML = `<div style="font-size: 28px; margin-bottom: 4px;">${month}</div><div style="font-size: 14px; opacity: 0.9;">${monthNames[month - 1]}</div>`;
                 btn.onclick = () => {
                     selectedMonth = month;
                     const daysInMonth = getDaysInMonth(selectedYear, selectedMonth);
@@ -780,20 +832,20 @@
                 const discountText = discountActive ? ' (٢٠٪ داشکاندن)' : '';
                 
                 resultElement.innerHTML = `
-                    ڕۆژە بەسەرچووەکان: <span class="highlight-error">${diffDays}</span><br>
-                    بۆ هەر ڕۆژێک <strong>${formatNumber(finePerDay)} دینار</strong>${discountText}<br>
-                    کۆی گشتی غەرامە: <span class="highlight-error">${formatNumber(totalFine)} دینار</span>
+                    <span class="result-line">ڕۆژە بەسەرچووەکان: <span class="highlight-error">${diffDays}</span></span>
+                    <span class="result-line">بۆ هەر ڕۆژێک <strong>${formatNumber(finePerDay)} دینار</strong>${discountText}</span>
+                    <span class="result-line">کۆی گشتی غەرامە: <span class="highlight-error">${formatNumber(totalFine)} دینار</span></span>
                 `;
             } else if (diffDays === 0) {
                 resultElement.innerHTML = `
-                    <span class="highlight-error">ئەمڕۆ کۆتایی وادەیە!</span><br>
-                    <strong>تکایە خێرابە لە تەواوکردنی گرێبەستەکە</strong>
+                    <span class="result-line"><span class="highlight-error">ئەمڕۆ کۆتایی وادەیە!</span></span>
+                    <span class="result-line"><strong>تکایە خێرابە لە تەواوکردنی گرێبەستەکە</strong></span>
                 `;
             } else {
                 const remainingDays = Math.abs(diffDays);
                 resultElement.innerHTML = `
-                    <span class="highlight-success">✓ بەسەر نەچووە</span><br>
-                    <strong>${remainingDays} ڕۆژ</strong> ماوە بۆ کۆتایی وادە
+                    <span class="result-line"><span class="highlight-success">✓ بەسەر نەچووە</span></span>
+                    <span class="result-line"><strong>${remainingDays} ڕۆژ</strong> ماوە بۆ کۆتایی وادە</span>
                 `;
             }
         }
