@@ -11,9 +11,79 @@
             box-sizing: border-box;
         }
 
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes numberChange {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); color: #F59E0B; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes ledColorShift {
+            0% { background-position: 0% 50%; }
+            10% { background-position: 10% 50%; }
+            20% { background-position: 20% 50%; }
+            30% { background-position: 30% 50%; }
+            40% { background-position: 40% 50%; }
+            50% { background-position: 50% 50%; }
+            60% { background-position: 60% 50%; }
+            70% { background-position: 70% 50%; }
+            80% { background-position: 80% 50%; }
+            90% { background-position: 90% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #667eea;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
             min-height: 100vh;
             padding: 0;
             direction: rtl;
@@ -26,34 +96,51 @@
             text-align: center;
             font-size: 38px;
             font-weight: bold;
-            color: #1E293B;
+            background: linear-gradient(90deg, 
+                rgb(180, 0, 0) 0%,      /* سووری تۆخ */
+                rgb(200, 80, 0) 10%,    /* پرتەقاڵی تۆخ */
+                rgb(180, 150, 0) 20%,   /* زەردی تۆخ */
+                rgb(0, 150, 0) 30%,     /* سەوزی تۆخ */
+                rgb(0, 150, 180) 40%,   /* شینی ئاسمانی تۆخ */
+                rgb(0, 0, 180) 50%,     /* شینی تۆخ */
+                rgb(90, 0, 180) 60%,    /* بەنەوشەی تۆخ */
+                rgb(180, 0, 180) 70%,   /* پەمەیی تۆخ */
+                rgb(180, 0, 80) 80%,    /* گوڵابی تۆخ */
+                rgb(180, 0, 0) 100%     /* گەڕانەوە بۆ سووری تۆخ */
+            );
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             padding: 20px 15px;
             text-shadow: none;
             letter-spacing: 1px;
             line-height: 1.1;
             margin-bottom: 0;
-            background: white;
         }
 
         .container {
             max-width: 520px;
             width: 100%;
             margin: 0 auto;
-            background: #f8fafc;
+            background: rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(15px);
             border-radius: 25px 25px 0 0;
             padding: 20px;
+            box-shadow: 0 -10px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .info-card {
-            background: #EFF6FF;
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
             border-radius: 18px;
             padding: 16px;
             margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
             line-height: 1.1;
-            border: 1px solid #DBEAFE;
+            border: 2px solid rgba(59, 130, 246, 0.1);
         }
 
         .today-date {
@@ -65,6 +152,11 @@
             line-height: 1.6;
         }
 
+        .today-date::before {
+            content: "";
+            font-size: 20px;
+        }
+
         .deadline-info {
             text-align: center;
             font-size: 18px;
@@ -72,6 +164,11 @@
             margin-top: 2px;
             font-weight: 600;
             line-height: 1.6;
+        }
+
+        .deadline-info::before {
+            content: "";
+            font-size: 16px;
         }
 
         .discount-section {
@@ -82,16 +179,22 @@
             gap: 8px;
             margin-bottom: 15px;
             padding: 16px;
-            background: #F1F5F9;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
             line-height: 1.1;
-            border: 1px solid #E2E8F0;
+            border: 2px solid rgba(148, 163, 184, 0.1);
         }
 
         .discount-text {
             font-size: 22px;
             font-weight: bold;
             line-height: 1.1;
+        }
+
+        .discount-text::before {
+            content: "";
+            font-size: 20px;
         }
 
         .discount-active {
@@ -122,8 +225,10 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: #EF4444;
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            transition: .4s;
             border-radius: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         .slider:before {
@@ -134,11 +239,13 @@
             left: 4px;
             bottom: 4px;
             background: white;
+            transition: .4s;
             border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         input:checked + .slider {
-            background: #10B981;
+            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
         }
 
         input:checked + .slider:before {
@@ -159,6 +266,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 8px;
             margin-bottom: 12px;
+            animation: fadeInUp 1.2s ease;
         }
 
         .date-button {
@@ -175,15 +283,18 @@
         }
 
         .date-button:nth-child(1) {
-            background: #8B5CF6;
+            background: linear-gradient(135deg, rgb(139, 92, 246) 0%, rgb(124, 58, 237) 100%);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
         }
 
         .date-button:nth-child(2) {
-            background: #EC4899;
+            background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 100%);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
         }
 
         .date-button:nth-child(3) {
-            background: #0EA5E9;
+            background: linear-gradient(135deg, rgb(14, 165, 233) 0%, rgb(2, 132, 199) 100%);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
         }
 
         .date-label {
@@ -195,7 +306,7 @@
         }
 
         .result-container {
-            background: #F1F5F9;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 20px;
             padding: 15px 20px 20px 20px;
             display: flex;
@@ -203,7 +314,9 @@
             justify-content: center;
             text-align: center;
             min-height: 160px;
-            border: 1px solid #E2E8F0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+            position: relative;
+            border: 2px solid rgba(148, 163, 184, 0.1);
         }
 
         .result-text {
@@ -221,6 +334,7 @@
             color: #EF4444;
             font-size: 50px;
             font-weight: bold;
+            text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
             display: inline-block;
             line-height: 1;
         }
@@ -229,6 +343,7 @@
             color: #10B981;
             font-size: 48px;
             font-weight: bold;
+            text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
             display: inline-block;
             line-height: 1;
         }
@@ -256,6 +371,7 @@
             right: 0;
             bottom: 0;
             background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
             align-items: center;
             justify-content: center;
             z-index: 1000;
@@ -273,7 +389,8 @@
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
-            border: 1px solid #ccc;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .modal-title {
@@ -283,7 +400,7 @@
             margin-bottom: 8px;
             text-align: center;
             padding-bottom: 8px;
-            border-bottom: 2px solid #3B82F6;
+            border-bottom: 3px solid #3B82F6;
             line-height: 1.1;
         }
 
@@ -294,7 +411,7 @@
         }
 
         .grid-button {
-            background: #3B82F6;
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
             color: white;
             border: none;
             border-radius: 12px;
@@ -302,6 +419,7 @@
             font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
             line-height: 1;
             min-height: 58px;
             display: flex;
@@ -341,6 +459,8 @@
             }
 
             .discount-section {
+                flex-direction: row-reverse;
+                gap: 8px;
                 padding: 14px;
                 margin-bottom: 14px;
             }
