@@ -308,30 +308,30 @@
         }
 
         .date-button:nth-child(1) {
-            background: linear-gradient(135deg, rgb(55, 65, 150) 0%, rgb(75, 45, 100) 100%);
-            box-shadow: 0 4px 15px rgba(55, 65, 150, 0.5), 0 0 20px rgba(55, 65, 150, 0.3);
+            background: linear-gradient(135deg, rgb(139, 92, 246) 0%, rgb(124, 58, 237) 100%);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.5), 0 0 20px rgba(139, 92, 246, 0.3);
         }
 
         .date-button:nth-child(1):hover {
-            box-shadow: 0 10px 30px rgba(55, 65, 150, 0.7), 0 0 40px rgba(55, 65, 150, 0.5);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.7), 0 0 40px rgba(139, 92, 246, 0.5);
         }
 
         .date-button:nth-child(2) {
-            background: linear-gradient(135deg, rgb(180, 70, 150) 0%, rgb(180, 40, 60) 100%);
-            box-shadow: 0 4px 15px rgba(180, 70, 150, 0.5), 0 0 20px rgba(180, 70, 150, 0.3);
+            background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 100%);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.5), 0 0 20px rgba(236, 72, 153, 0.3);
         }
 
         .date-button:nth-child(2):hover {
-            box-shadow: 0 10px 30px rgba(180, 70, 150, 0.7), 0 0 40px rgba(180, 70, 150, 0.5);
+            box-shadow: 0 10px 30px rgba(236, 72, 153, 0.7), 0 0 40px rgba(236, 72, 153, 0.5);
         }
 
         .date-button:nth-child(3) {
-            background: linear-gradient(135deg, rgb(30, 110, 180) 0%, rgb(0, 150, 180) 100%);
-            box-shadow: 0 4px 15px rgba(30, 110, 180, 0.5), 0 0 20px rgba(30, 110, 180, 0.3);
+            background: linear-gradient(135deg, rgb(14, 165, 233) 0%, rgb(2, 132, 199) 100%);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.5), 0 0 20px rgba(14, 165, 233, 0.3);
         }
 
         .date-button:nth-child(3):hover {
-            box-shadow: 0 10px 30px rgba(30, 110, 180, 0.7), 0 0 40px rgba(30, 110, 180, 0.5);
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.7), 0 0 40px rgba(14, 165, 233, 0.5);
         }
 
         .date-button::before {
@@ -410,7 +410,7 @@
 
         .highlight-error {
             color: #EF4444;
-            font-size: 38px;
+            font-size: 50px;
             font-weight: bold;
             text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
             display: inline-block;
@@ -420,12 +420,18 @@
 
         .highlight-success {
             color: #10B981;
-            font-size: 38px;
+            font-size: 48px;
             font-weight: bold;
             text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
             display: inline-block;
             animation: pulse 2s infinite;
             line-height: 1;
+        }
+
+        .big-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: #1E293B;
         }
 
         .result-line {
@@ -900,7 +906,7 @@
                 resultElement.innerHTML = `
                     <span class="result-line">ڕۆژە بەسەرچووەکان: <span class="highlight-error">${diffDays}</span></span>
                     <span class="result-line">بۆ هەر ڕۆژێک <strong>${formatNumber(finePerDay)} دینار</strong>${discountText}</span>
-                    <span class="result-line">کۆی گشتی غەرامە: <span class="highlight-error">${formatNumber(totalFine)} دینار</span></span>
+                    <span class="result-line">کۆی گشتی: <span class="highlight-error">${formatNumber(totalFine)} دینار</span></span>
                 `;
             } else if (diffDays === 0) {
                 resultElement.innerHTML = `
@@ -911,7 +917,7 @@
                 const remainingDays = Math.abs(diffDays);
                 resultElement.innerHTML = `
                     <span class="result-line"><span class="highlight-success">✓ بەسەر نەچووە</span></span>
-                    <span class="result-line"><strong>${remainingDays} ڕۆژ</strong> ماوە بەسەربچێت</span>
+                    <span class="result-line"><span class="big-number">${remainingDays}</span> ڕۆژ ماوە بەسەربچێت</span>
                 `;
             }
         }
