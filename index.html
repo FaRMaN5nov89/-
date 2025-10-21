@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>هەژمارکردنی گرێبەستی الیکترونی</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Apple iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="گرێبەست">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Description -->
+    <meta name="description" content="حیسابکردنەوەی غرامەی گرێبەستی ئەلیکترۆنی بە کوردی">
+    
     <style>
         * {
             margin: 0;
@@ -84,6 +98,7 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
             background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
             min-height: 100vh;
             padding: 0;
             direction: rtl;
@@ -114,6 +129,7 @@
             background-clip: text;
             padding: 20px 15px;
             text-shadow: none;
+            animation: fadeInUp 0.8s ease, ledColorShift 4s linear infinite;
             letter-spacing: 1px;
             line-height: 1.1;
             margin-bottom: 0;
@@ -130,6 +146,7 @@
             box-shadow: 0 -10px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
             display: flex;
             flex-direction: column;
+            animation: fadeInUp 1s ease;
             flex-grow: 1;
         }
 
@@ -138,9 +155,16 @@
             border-radius: 18px;
             padding: 16px;
             margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15), 0 0 30px rgba(59, 130, 246, 0.05);
+            animation: slideIn 0.8s ease;
             line-height: 1.1;
             border: 2px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2), 0 0 40px rgba(59, 130, 246, 0.1);
         }
 
         .today-date {
@@ -181,14 +205,22 @@
             padding: 16px;
             background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
             border-radius: 18px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 0 25px rgba(0,0,0,0.03);
+            animation: slideIn 1s ease;
+            transition: all 0.3s ease;
             line-height: 1.1;
             border: 2px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .discount-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 35px rgba(0,0,0,0.05);
         }
 
         .discount-text {
             font-size: 22px;
             font-weight: bold;
+            transition: all 0.3s ease;
             line-height: 1.1;
         }
 
@@ -199,57 +231,7 @@
 
         .discount-active {
             color: #10B981;
-        }
-
-        .discount-inactive {
-            color: #EF4444;
-        }
-
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 65px;
-            height: 35px;
-        }
-
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-            transition: .4s;
-            border-radius: 35px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-        }
-
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 28px;
-            width: 28px;
-            left: 4px;
-            bottom: 4px;
-            background: white;
-            transition: .4s;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-
-        input:checked + .slider {
-            background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-        }
-
-        input:checked + .slider:before {
-            transform: translateX(28px);
+            animation: pulse 2s infinite;
         }
 
         .section-label {
@@ -277,6 +259,7 @@
             font-size: 40px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
             line-height: 1;
@@ -287,14 +270,34 @@
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
         }
 
+        .date-button:nth-child(1):hover {
+            box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+        }
+
         .date-button:nth-child(2) {
             background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 100%);
             box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
         }
 
+        .date-button:nth-child(2):hover {
+            box-shadow: 0 6px 18px rgba(236, 72, 153, 0.45);
+        }
+
         .date-button:nth-child(3) {
             background: linear-gradient(135deg, rgb(14, 165, 233) 0%, rgb(2, 132, 199) 100%);
             box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+        }
+
+        .date-button:nth-child(3):hover {
+            box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45);
+        }
+
+        .date-button:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .date-button:active {
+            transform: translateY(0) scale(1);
         }
 
         .date-label {
@@ -315,6 +318,7 @@
             text-align: center;
             min-height: 160px;
             box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+            animation: fadeInUp 1.4s ease;
             position: relative;
             border: 2px solid rgba(148, 163, 184, 0.1);
         }
@@ -375,6 +379,7 @@
             align-items: center;
             justify-content: center;
             z-index: 1000;
+            animation: fadeIn 0.3s ease;
         }
 
         .modal.active {
@@ -389,7 +394,8 @@
             width: 90%;
             max-height: 85vh;
             overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
+            animation: modalSlideIn 0.4s ease;
             border: 2px solid rgba(255,255,255,0.2);
         }
 
@@ -419,12 +425,26 @@
             font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
             line-height: 1;
             min-height: 58px;
             display: flex;
             align-items: center;
             justify-content: center;
+        }
+
+        .grid-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.35);
+        }
+
+        .grid-button:active {
+            transform: translateY(0) scale(1);
+        }
+
+        .number-animate {
+            animation: numberChange 0.5s ease;
         }
 
         @media (max-width: 600px) {
@@ -615,11 +635,7 @@
         </div>
         
         <div class="discount-section">
-            <span class="discount-text" id="discountText">داشکاندن ناچاڵاکە</span>
-            <label class="switch">
-                <input type="checkbox" id="discountSwitch">
-                <span class="slider"></span>
-            </label>
+            <span class="discount-text discount-active" id="discountText">٢٠٪ داشکاندن چاڵاکە</span>
         </div>
 
         <div class="section-label">ڕێکەوتی دەستپێکردنی گرێبەست</div>
@@ -656,18 +672,12 @@
         let selectedYear = currentDate.getFullYear();
         let selectedMonth = currentDate.getMonth() + 1;
         let selectedDay = currentDate.getDate();
-        let discountActive = false;
+        let discountActive = true; // داشکاندن هەمیشە چاڵاکە
 
         function init() {
             updateTodayDate();
             updateDisplay();
             calculateResult();
-            
-            document.getElementById('discountSwitch').addEventListener('change', function() {
-                discountActive = this.checked;
-                updateDiscountText();
-                calculateResult();
-            });
         }
 
         function updateTodayDate() {
@@ -684,17 +694,16 @@
             document.getElementById('deadlineInfo').textContent = `کۆتایی وادە: ${formatted}`;
         }
 
-        function updateDiscountText() {
-            const text = discountActive ? '٢٠٪ داشکاندن چاڵاکە' : 'داشکاندن ناچاڵاکە';
-            const element = document.getElementById('discountText');
-            element.textContent = text;
-            element.className = discountActive ? 'discount-text discount-active' : 'discount-text discount-inactive';
-        }
-
         function updateDisplay() {
             document.getElementById('yearBtn').textContent = selectedYear;
             document.getElementById('monthBtn').textContent = selectedMonth;
             document.getElementById('dayBtn').textContent = selectedDay;
+            
+            ['yearBtn', 'monthBtn', 'dayBtn'].forEach(id => {
+                const btn = document.getElementById(id);
+                btn.classList.add('number-animate');
+                setTimeout(() => btn.classList.remove('number-animate'), 500);
+            });
         }
 
         function getDaysInMonth(year, month) {
@@ -824,6 +833,54 @@
         }
 
         init();
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // تۆمارکردنی Service Worker بۆ کارکردن بێ ئینتەرنێت
+        if ('serviceWorker' in navigator) {
+            let newWorker;
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered successfully');
+                        
+                        // چێککردن بۆ ئەپدەیت
+                        registration.addEventListener('updatefound', () => {
+                            newWorker = registration.installing;
+                            
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // ئەگەر وەشانی نوێ هەبێت
+                                    if (confirm('🔄 وەشانی نوێی بەرنامە ئامادەیە!\n\nدەتەوێت ئێستا ئەپدەیت بکەیت؟')) {
+                                        newWorker.postMessage({ action: 'skipWaiting' });
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('❌ Service Worker registration failed:', error);
+                    });
+
+                // کاتێک Service Worker ئەپدەیت دەکرێت
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    window.location.reload();
+                });
+            });
+
+            // پیشاندانی دۆخی ئۆنڵاین/ئۆفڵاین
+            window.addEventListener('online', () => {
+                console.log('🌐 ئۆنڵاین - پەیوەندی بە ئینتەرنێتەوە هەیە');
+            });
+
+            window.addEventListener('offline', () => {
+                console.log('📴 ئۆفڵاین - بێ ئینتەرنێت کاردەکات');
+            });
+        } else {
+            console.warn('⚠️ Service Worker پشتگیری ناکرێت لەم Browser ە');
+        }
     </script>
 </body>
 </html>
