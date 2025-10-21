@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هەژمارکردنی گرێبەستی الیکترونی</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Apple iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="گرێبەست">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    
+    <!-- Description -->
+    <meta name="description" content="حیسابکردنەوەی غرامەی گرێبەستی ئەلیکترۆنی بە کوردی">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes numberChange {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); color: #F59E0B; }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes ledColorShift {
+            0% { background-position: 0% 50%; }
+            10% { background-position: 10% 50%; }
+            20% { background-position: 20% 50%; }
+            30% { background-position: 30% 50%; }
+            40% { background-position: 40% 50%; }
+            50% { background-position: 50% 50%; }
+            60% { background-position: 60% 50%; }
+            70% { background-position: 70% 50%; }
+            80% { background-position: 80% 50%; }
+            90% { background-position: 90% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                transform: translateY(-50px) scale(0.9);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            padding: 0;
+            direction: rtl;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .app-title {
+            text-align: center;
+            font-size: 38px;
+            font-weight: bold;
+            background: linear-gradient(90deg, 
+                rgb(180, 0, 0) 0%,      /* سووری تۆخ */
+                rgb(200, 80, 0) 10%,    /* پرتەقاڵی تۆخ */
+                rgb(180, 150, 0) 20%,   /* زەردی تۆخ */
+                rgb(0, 150, 0) 30%,     /* سەوزی تۆخ */
+                rgb(0, 150, 180) 40%,   /* شینی ئاسمانی تۆخ */
+                rgb(0, 0, 180) 50%,     /* شینی تۆخ */
+                rgb(90, 0, 180) 60%,    /* بەنەوشەی تۆخ */
+                rgb(180, 0, 180) 70%,   /* پەمەیی تۆخ */
+                rgb(180, 0, 80) 80%,    /* گوڵابی تۆخ */
+                rgb(180, 0, 0) 100%     /* گەڕانەوە بۆ سووری تۆخ */
+            );
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 20px 15px;
+            text-shadow: none;
+            animation: fadeInUp 0.8s ease, ledColorShift 4s linear infinite;
+            letter-spacing: 1px;
+            line-height: 1.1;
+            margin-bottom: 0;
+        }
+
+        .container {
+            max-width: 520px;
+            width: 100%;
+            margin: 0 auto;
+            background: rgba(248, 250, 252, 0.98);
+            backdrop-filter: blur(15px);
+            border-radius: 25px 25px 0 0;
+            padding: 20px;
+            box-shadow: 0 -10px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
+            display: flex;
+            flex-direction: column;
+            animation: fadeInUp 1s ease;
+            flex-grow: 1;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            border-radius: 18px;
+            padding: 16px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15), 0 0 30px rgba(59, 130, 246, 0.05);
+            animation: slideIn 0.8s ease;
+            line-height: 1.1;
+            border: 2px solid rgba(59, 130, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(59, 130, 246, 0.2), 0 0 40px rgba(59, 130, 246, 0.1);
+        }
+
+        .today-date {
+            text-align: center;
+            font-size: 22px;
+            margin-bottom: 8px;
+            color: #1E293B;
+            font-weight: 700;
+            line-height: 1.6;
+        }
+
+        .today-date::before {
+            content: "";
+            font-size: 20px;
+        }
+
+        .deadline-info {
+            text-align: center;
+            font-size: 18px;
+            color: #475569;
+            margin-top: 2px;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+
+        .deadline-info::before {
+            content: "";
+            font-size: 16px;
+        }
+
+        .discount-section {
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 15px;
+            padding: 16px;
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            border-radius: 18px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1), 0 0 25px rgba(0,0,0,0.03);
+            animation: slideIn 1s ease;
+            transition: all 0.3s ease;
+            line-height: 1.1;
+            border: 2px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .discount-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15), 0 0 35px rgba(0,0,0,0.05);
+        }
+
+        .discount-text {
+            font-size: 22px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            line-height: 1.1;
+        }
+
+        .discount-text::before {
+            content: "";
+            font-size: 20px;
+        }
+
+        .discount-active {
+            color: #10B981;
+            animation: pulse 2s infinite;
+        }
+
+        .section-label {
+            font-size: 24px;
+            color: #475569;
+            margin-bottom: 8px;
+            text-align: center;
+            font-weight: 700;
+            line-height: 1.8;
+        }
+
+        .date-picker {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-bottom: 12px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .date-button {
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 10px 6px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            line-height: 1;
+        }
+
+        .date-button:nth-child(1) {
+            background: linear-gradient(135deg, rgb(139, 92, 246) 0%, rgb(124, 58, 237) 100%);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
+        }
+
+        .date-button:nth-child(1):hover {
+            box-shadow: 0 6px 18px rgba(139, 92, 246, 0.45);
+        }
+
+        .date-button:nth-child(2) {
+            background: linear-gradient(135deg, rgb(236, 72, 153) 0%, rgb(219, 39, 119) 100%);
+            box-shadow: 0 4px 12px rgba(236, 72, 153, 0.4);
+        }
+
+        .date-button:nth-child(2):hover {
+            box-shadow: 0 6px 18px rgba(236, 72, 153, 0.45);
+        }
+
+        .date-button:nth-child(3) {
+            background: linear-gradient(135deg, rgb(14, 165, 233) 0%, rgb(2, 132, 199) 100%);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.4);
+        }
+
+        .date-button:nth-child(3):hover {
+            box-shadow: 0 6px 18px rgba(14, 165, 233, 0.45);
+        }
+
+        .date-button:hover {
+            transform: translateY(-3px) scale(1.02);
+        }
+
+        .date-button:active {
+            transform: translateY(0) scale(1);
+        }
+
+        .date-label {
+            display: block;
+            font-size: 12px;
+            margin-top: 2px;
+            opacity: 0.9;
+            line-height: 1;
+        }
+
+        .result-container {
+            background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
+            border-radius: 20px;
+            padding: 15px 20px 20px 20px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            text-align: center;
+            min-height: 160px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.6);
+            animation: fadeInUp 1.4s ease;
+            position: relative;
+            border: 2px solid rgba(148, 163, 184, 0.1);
+        }
+
+        .result-text {
+            font-size: 24px;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .result-text strong {
+            color: #1E293B;
+            font-size: 32px;
+        }
+
+        .highlight-error {
+            color: #EF4444;
+            font-size: 50px;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .highlight-success {
+            color: #10B981;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 0 2px 10px rgba(16, 185, 129, 0.3);
+            display: inline-block;
+            line-height: 1;
+        }
+
+        .big-number {
+            font-size: 42px;
+            font-weight: 900;
+            color: #1E293B;
+        }
+
+        .result-line {
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .result-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 22px;
+            padding: 15px;
+            max-width: 380px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3), 0 0 100px rgba(255,255,255,0.1);
+            animation: modalSlideIn 0.4s ease;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1E293B;
+            margin-bottom: 8px;
+            text-align: center;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #3B82F6;
+            line-height: 1.1;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+        }
+
+        .grid-button {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            line-height: 1;
+            min-height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid-button:hover {
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.35);
+        }
+
+        .grid-button:active {
+            transform: translateY(0) scale(1);
+        }
+
+        .number-animate {
+            animation: numberChange 0.5s ease;
+        }
+
+        @media (max-width: 600px) {
+            .app-title {
+                font-size: 28px;
+                padding: 18px 12px;
+            }
+
+            .container {
+                padding: 18px 14px;
+                border-radius: 20px 20px 0 0;
+            }
+            
+            .info-card {
+                padding: 14px;
+                margin-bottom: 14px;
+            }
+            
+            .today-date {
+                font-size: 20px;
+                margin-bottom: 3px;
+            }
+
+            .deadline-info {
+                font-size: 17px;
+                margin-top: 2px;
+            }
+
+            .section-label {
+                font-size: 16px;
+                margin-bottom: 8px;
+            }
+
+            .discount-section {
+                flex-direction: row-reverse;
+                gap: 8px;
+                padding: 14px;
+                margin-bottom: 14px;
+            }
+
+            .discount-text {
+                font-size: 20px;
+            }
+
+            .date-picker {
+                gap: 6px;
+                margin-bottom: 14px;
+            }
+
+            .date-button {
+                padding: 12px 6px;
+                font-size: 36px;
+            }
+
+            .date-label {
+                font-size: 11px;
+            }
+
+            .result-container {
+                padding: 12px 20px 20px 20px;
+                min-height: 150px;
+            }
+
+            .result-text {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            .result-text strong {
+                font-size: 20px;
+            }
+
+            .highlight-error,
+            .highlight-success {
+                font-size: 34px;
+            }
+
+            .result-line {
+                margin-bottom: 6px;
+            }
+
+            .modal-content {
+                padding: 15px;
+                width: 92%;
+            }
+
+            .modal-title {
+                font-size: 18px;
+                margin-bottom: 8px;
+            }
+
+            .grid-button {
+                padding: 10px;
+                font-size: 22px;
+                min-height: 55px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .app-title {
+                font-size: 24px;
+                padding: 15px 10px;
+            }
+
+            .container {
+                padding: 15px 10px;
+            }
+
+            .info-card {
+                padding: 12px;
+            }
+
+            .today-date {
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+
+            .deadline-info {
+                font-size: 16px;
+                margin-top: 1px;
+            }
+
+            .section-label {
+                font-size: 15px;
+            }
+
+            .discount-text {
+                font-size: 18px;
+            }
+
+            .date-button {
+                padding: 10px 5px;
+                font-size: 32px;
+            }
+
+            .date-label {
+                font-size: 10px;
+                margin-top: 1px;
+            }
+
+            .result-container {
+                padding: 10px 16px 16px 16px;
+                min-height: 140px;
+            }
+
+            .result-text {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+
+            .result-text strong {
+                font-size: 18px;
+            }
+
+            .highlight-error,
+            .highlight-success {
+                font-size: 30px;
+            }
+
+            .result-line {
+                margin-bottom: 5px;
+            }
+
+            .modal-content {
+                padding: 12px;
+            }
+
+            .modal-title {
+                font-size: 17px;
+                margin-bottom: 6px;
+            }
+
+            .grid-button {
+                padding: 9px;
+                font-size: 20px;
+                min-height: 52px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-title">هەژمارکردنی گرێبەستی الیکترونی</div>
+    
+    <div class="container">
+        <div class="info-card">
+            <div class="today-date" id="todayDate"></div>
+            <div class="deadline-info" id="deadlineInfo"></div>
+        </div>
+        
+        <div class="discount-section">
+            <span class="discount-text discount-active" id="discountText">٢٠٪ داشکاندن چاڵاکە</span>
+        </div>
+
+        <div class="section-label">ڕێکەوتی دەستپێکردنی گرێبەست</div>
+        
+        <div class="date-picker">
+            <button class="date-button" onclick="showDayPicker()">
+                <div id="dayBtn">1</div>
+                <div class="date-label">ڕۆژ</div>
+            </button>
+            <button class="date-button" onclick="showMonthPicker()">
+                <div id="monthBtn">1</div>
+                <div class="date-label">مانگ</div>
+            </button>
+            <button class="date-button" onclick="showYearPicker()">
+                <div id="yearBtn">2026</div>
+                <div class="date-label">ساڵ</div>
+            </button>
+        </div>
+        
+        <div class="result-container">
+            <div class="result-text" id="resultText"></div>
+        </div>
+    </div>
+
+    <div class="modal" id="pickerModal">
+        <div class="modal-content">
+            <div class="modal-title" id="modalTitle"></div>
+            <div class="grid-container" id="gridContainer"></div>
+        </div>
+    </div>
+
+    <script>
+        let currentDate = new Date();
+        let selectedYear = currentDate.getFullYear();
+        let selectedMonth = currentDate.getMonth() + 1;
+        let selectedDay = currentDate.getDate();
+        let discountActive = true; // داشکاندن هەمیشە چاڵاکە
+
+        function init() {
+            updateTodayDate();
+            updateDisplay();
+            calculateResult();
+        }
+
+        function updateTodayDate() {
+            const formatted = `${currentDate.getDate()}/${currentDate.getMonth() + 1}/${currentDate.getFullYear()}`;
+            document.getElementById('todayDate').textContent = `ڕێکەوتی ئەمڕۆ: ${formatted}`;
+        }
+
+        function updateDeadlineInfo() {
+            const startDate = new Date(selectedYear, selectedMonth - 1, selectedDay);
+            const deadline = new Date(startDate);
+            deadline.setDate(deadline.getDate() + 59);
+            
+            const formatted = `${deadline.getDate()}/${deadline.getMonth() + 1}/${deadline.getFullYear()}`;
+            document.getElementById('deadlineInfo').textContent = `کۆتایی وادە: ${formatted}`;
+        }
+
+        function updateDisplay() {
+            document.getElementById('yearBtn').textContent = selectedYear;
+            document.getElementById('monthBtn').textContent = selectedMonth;
+            document.getElementById('dayBtn').textContent = selectedDay;
+            
+            ['yearBtn', 'monthBtn', 'dayBtn'].forEach(id => {
+                const btn = document.getElementById(id);
+                btn.classList.add('number-animate');
+                setTimeout(() => btn.classList.remove('number-animate'), 500);
+            });
+        }
+
+        function getDaysInMonth(year, month) {
+            return new Date(year, month, 0).getDate();
+        }
+
+        function showYearPicker() {
+            const modal = document.getElementById('pickerModal');
+            const grid = document.getElementById('gridContainer');
+            document.getElementById('modalTitle').textContent = '📅 ساڵەکان';
+            
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            
+            for (let year = 2021; year <= 2035; year++) {
+                const btn = document.createElement('button');
+                btn.className = 'grid-button';
+                btn.textContent = year;
+                btn.onclick = () => {
+                    selectedYear = year;
+                    updateDisplay();
+                    calculateResult();
+                    closeModal();
+                };
+                grid.appendChild(btn);
+            }
+            modal.classList.add('active');
+        }
+
+        function showMonthPicker() {
+            const modal = document.getElementById('pickerModal');
+            const grid = document.getElementById('gridContainer');
+            document.getElementById('modalTitle').textContent = '📆 مانگەکان';
+            
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = 'repeat(3, 1fr)';
+            
+            for (let month = 1; month <= 12; month++) {
+                const btn = document.createElement('button');
+                btn.className = 'grid-button';
+                btn.textContent = month;
+                btn.onclick = () => {
+                    selectedMonth = month;
+                    const daysInMonth = getDaysInMonth(selectedYear, selectedMonth);
+                    if (selectedDay > daysInMonth) {
+                        selectedDay = daysInMonth;
+                    }
+                    updateDisplay();
+                    calculateResult();
+                    closeModal();
+                };
+                grid.appendChild(btn);
+            }
+            modal.classList.add('active');
+        }
+
+        function showDayPicker() {
+            const modal = document.getElementById('pickerModal');
+            const grid = document.getElementById('gridContainer');
+            document.getElementById('modalTitle').textContent = '📋 ڕۆژەکان';
+            
+            const daysInMonth = getDaysInMonth(selectedYear, selectedMonth);
+            grid.innerHTML = '';
+            grid.style.gridTemplateColumns = 'repeat(4, 1fr)';
+            
+            for (let day = 1; day <= daysInMonth; day++) {
+                const btn = document.createElement('button');
+                btn.className = 'grid-button';
+                btn.textContent = day;
+                btn.onclick = () => {
+                    selectedDay = day;
+                    updateDisplay();
+                    calculateResult();
+                    closeModal();
+                };
+                grid.appendChild(btn);
+            }
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('pickerModal').classList.remove('active');
+        }
+
+        document.getElementById('pickerModal').onclick = function(e) {
+            if (e.target === this) closeModal();
+        };
+
+        function calculateResult() {
+            const startDate = new Date(selectedYear, selectedMonth - 1, selectedDay);
+            const deadline = new Date(startDate);
+            deadline.setDate(deadline.getDate() + 59);
+            
+            updateDeadlineInfo();
+            
+            const diffTime = currentDate - deadline;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            const finePerDay = discountActive ? 8000 : 10000;
+            const resultElement = document.getElementById('resultText');
+            
+            if (diffDays > 0) {
+                const totalFine = diffDays * finePerDay;
+                const discountText = discountActive ? ' (٢٠٪ داشکاندن)' : '';
+                
+                resultElement.innerHTML = `
+                    <span class="result-line">ڕۆژە بەسەرچووەکان: <span class="highlight-error">${diffDays}</span></span>
+                    <span class="result-line">بۆ هەر ڕۆژێک <strong>${formatNumber(finePerDay)} دینار</strong>${discountText}</span>
+                    <span class="result-line">کۆی گشتی: <span class="highlight-error">${formatNumber(totalFine)} دینار</span></span>
+                `;
+            } else if (diffDays === 0) {
+                resultElement.innerHTML = `
+                    <span class="result-line"><span class="highlight-error">ئەمڕۆ کۆتایی وادەیە!</span></span>
+                    <span class="result-line"><strong>تکایە خێرابە لە تەواوکردنی مامەڵەکەت</strong></span>
+                `;
+            } else {
+                const remainingDays = Math.abs(diffDays);
+                resultElement.innerHTML = `
+                    <span class="result-line"><span class="highlight-success">✓ بەسەر نەچووە</span></span>
+                    <span class="result-line"><span class="big-number">${remainingDays}</span> ڕۆژ ماوە بەسەربچێت</span>
+                `;
+            }
+        }
+
+        function formatNumber(num) {
+            return num.toLocaleString('en-US');
+        }
+
+        init();
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // تۆمارکردنی Service Worker بۆ کارکردن بێ ئینتەرنێت
+        if ('serviceWorker' in navigator) {
+            let newWorker;
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered successfully');
+                        
+                        // چێککردن بۆ ئەپدەیت
+                        registration.addEventListener('updatefound', () => {
+                            newWorker = registration.installing;
+                            
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // ئەگەر وەشانی نوێ هەبێت
+                                    if (confirm('🔄 وەشانی نوێی بەرنامە ئامادەیە!\n\nدەتەوێت ئێستا ئەپدەیت بکەیت؟')) {
+                                        newWorker.postMessage({ action: 'skipWaiting' });
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('❌ Service Worker registration failed:', error);
+                    });
+
+                // کاتێک Service Worker ئەپدەیت دەکرێت
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    window.location.reload();
+                });
+            });
+
+            // پیشاندانی دۆخی ئۆنڵاین/ئۆفڵاین
+            window.addEventListener('online', () => {
+                console.log('🌐 ئۆنڵاین - پەیوەندی بە ئینتەرنێتەوە هەیە');
+            });
+
+            window.addEventListener('offline', () => {
+                console.log('📴 ئۆفڵاین - بێ ئینتەرنێت کاردەکات');
+            });
+        } else {
+            console.warn('⚠️ Service Worker پشتگیری ناکرێت لەم Browser ە');
+        }
+    </script>
+</body>
+</html>
