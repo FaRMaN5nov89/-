@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>هەژمارکردنی گرێبەستی الیکترونی</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#667eea">
+    
+    <!-- Apple iOS Support -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="گرێبەست">
+    <link rel="apple-touch-icon" href="/icon-192.png">
+    
+    <!-- Description -->
+    <meta name="description" content="حیسابکردنەوەی غرامەی گرێبەستی ئەلیکترۆنی بە کوردی">
+    
     <style>
         * {
             margin: 0;
@@ -803,7 +817,7 @@
             } else if (diffDays === 0) {
                 resultElement.innerHTML = `
                     <span class="result-line"><span class="highlight-error">ئەمڕۆ کۆتایی وادەیە!</span></span>
-                    <span class="result-line"><strong>تکایە خێرابە لە تەواوکردنی مامەڵەکەت</strong></span>
+                    <span class="result-line"><strong>تکایە خێرابە لە تەواوکردنی گرێبەستەکە</strong></span>
                 `;
             } else {
                 const remainingDays = Math.abs(diffDays);
@@ -819,6 +833,54 @@
         }
 
         init();
+    </script>
+
+    <!-- PWA Service Worker Registration -->
+    <script>
+        // تۆمارکردنی Service Worker بۆ کارکردن بێ ئینتەرنێت
+        if ('serviceWorker' in navigator) {
+            let newWorker;
+
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker registered successfully');
+                        
+                        // چێککردن بۆ ئەپدەیت
+                        registration.addEventListener('updatefound', () => {
+                            newWorker = registration.installing;
+                            
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // ئەگەر وەشانی نوێ هەبێت
+                                    if (confirm('🔄 وەشانی نوێی بەرنامە ئامادەیە!\n\nدەتەوێت ئێستا ئەپدەیت بکەیت؟')) {
+                                        newWorker.postMessage({ action: 'skipWaiting' });
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error('❌ Service Worker registration failed:', error);
+                    });
+
+                // کاتێک Service Worker ئەپدەیت دەکرێت
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    window.location.reload();
+                });
+            });
+
+            // پیشاندانی دۆخی ئۆنڵاین/ئۆفڵاین
+            window.addEventListener('online', () => {
+                console.log('🌐 ئۆنڵاین - پەیوەندی بە ئینتەرنێتەوە هەیە');
+            });
+
+            window.addEventListener('offline', () => {
+                console.log('📴 ئۆفڵاین - بێ ئینتەرنێت کاردەکات');
+            });
+        } else {
+            console.warn('⚠️ Service Worker پشتگیری ناکرێت لەم Browser ە');
+        }
     </script>
 </body>
 </html>
